@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +17,358 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.flex-right {
+  justify-content: flex-end; /* Align items to the right */
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+  /* Styles for mobile view */
+  nav ul {
+      flex-direction: column; /* Stack items vertically on mobile */
+  }
+}
+
+
+/* Header Styles */
+header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between logo and nav */
+  align-items: center; /* Vertically center items */
+  padding: 1rem; /* Padding around the header */
+  background-color: #fff; /* Dark background for the header */
+}
+
+/* Logo Styles */
+header img {
+  height: 50px; /* Adjust logo height */
+}
+
+
+/* Nav Styles */
+.navbar ul {
+  list-style-type: none; /* Removes bullets from the list */
+  margin: 0; /* Resets default margin */
+  padding: 0; /* Resets default padding */
+  display: flex; /* Displays items in a row */
+  justify-content: flex-end; /* Aligns items to the right */
+}
+
+.navbar ul li {
+  margin-left: 2rem; /* Space between items */
+}
+
+.navbar ul li a {
+  text-decoration: none; /* Removes underline */
+  color: #000; /* White color for links */
+  font-weight: bold; /* Bold text */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+  font-size: 1.33rem; /* Font size for the text */
+  font-family:'Karla', sans-serif;
+}
+
+.navbar ul li a:hover {
+  color: #F4CE14; /* Change color on hover */
+}
+
+/*THIS IS FOR MAIN.JS*/
+
+
+/* Main Section Styles */
+main {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  flex-grow: 1;
+}
+
+/* Section Styles */
+section {
+  margin-bottom: 3rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+/* Headings Styles */
+
+h2 {
+  font-size: 3.33rem;
+  color: #000;
+  margin-top: 1rem;
+  text-align: center;
+  font-family: 'Markazi Text', sans-serif;
+}
+
+/* Paragraph Styles */
+p {
+  font-size: 1rem;
+  font-family: 'Karla', sans-serif;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+  color: #95A29D;
+}
+
+/* Button Styles */
+button {
+  background-color: #F4CE14;
+  color: black;
+  border: none;
+  border-radius: 16px;
+  padding: 0.5rem 1rem;
+  font-size: 1.67rem;
+  font-family: 'Karla', sans-serif;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Styles for Reserve a Table Section OLD!*/
+/*.reserve-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: #495E57;
+}
+
+.reserve-section img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.reserve-content {
+  max-width: 50%;
+  align-items: center;
+} 
+TEMPORARY END*/
+
+/*CORRECTED RESERVE A TABLE DESIGN*/
+
+
+/* Styles for Reserve a Table Section */
+.reserve-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem; /* Adjust padding for spacing */
+  background-color: #495E57;
+  border-radius: 8px; /* Add rounded corners to the section */
+}
+
+/* Content Styling */
+.reserve-content {
+  max-width: 45%;
+  color: #fff; /* Light text color for better contrast */
+}
+
+/* Headings Styles */
+.reserve-content h1 {
+  font-size: 5.33rem; /*coverted 64pt to rem*/
+  color: #333; /* Light text color for better readability */
+  text-align: left;
+  font-family: 'Markazi Text', serif; /* Align text to the left */
+}
+
+.reserve-content h2 {
+  font-size: 3.33rem;
+  color: #CBCDCC;
+  margin-top: 1rem;
+  text-align: left; /* Align text to the left */
+  font-family: 'Markazi Text', sans-serif;
+}
+
+/* Paragraph Styles */
+.reserve-content p {
+  font-size: 1.67rem;
+  line-height: 1.5;
+  margin: 1rem 0; /* Space above and below paragraph */
+  color: #CBCDCC;
+  text-align: left; /* Align text to the left */
+  font-family: 'Karla', sans-serif;
+}
+
+/* Button Styles */
+.reserve-content button {
+  background-color: #F4CE14;
+  color: #333;
+  border: none;
+  border-radius: 16px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.33rem;
+  font-family: 'Karla', sans-serif;
+  cursor: pointer;
+  margin-top: 1rem; /* Space above the button */
+  display: inline-block; /* Inline-block for better positioning */
+  transition: background-color 0.3s;
+}
+
+.reserve-content button:hover {
+  background-color: #d4b012; /* Darker yellow on hover */
+}
+
+/* Image Styles */
+.reserve-section img {
+  max-width: 25%; /* Adjust to fit the layout */
+  height: auto;
+  border-radius: 8px;
+  margin-left: 2rem; /* Space between the image and the content */
+}
+
+
+
+/* Specials Section Styles */
+.specials {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Special Item Styles */
+.special-item {
+  text-align: center;
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #EDEFEE;
+  width: 250px;
+}
+
+.price{
+  color: #FBDABB;
+  font-weight:bold;
+}
+
+.special-item h3{
+  color:#707171;
+  font-size: 1.67rem;
+  font-family: 'Karla', sans-serif;
+}
+
+/* Image Styles for Specials */
+.special-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+
+
+/*RESERVATIONFORM.JS HERE*/
+
+/* Updated Reservation Form Styles */
+.reservation-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #F3F3F3; /* Light gray background */
+  border-radius: 8px;
+  text-align: center;
+}
+
+.reservation-form h2 {
+  font-size: 3.33rem;
+  font-family: 'Markazi Text', sans-serif;
+  font-weight: bold;
+  color: #333; /* Dark text color */
+  margin-bottom: 1.5rem;
+}
+
+.reservation-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 1.33rem;
+  font-family: 'Karla', sans-serif;
+  font-weight: bold;
+  color: #4A4A4A; /* Dark gray text color */
+}
+
+.reservation-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #495E57; /* Dark background for input */
+  color: #bbb; /* White text color */
+  font-size: 1.33rem;
+  font-family: 'Karla', sans-serif;
+  margin-bottom: 1.25rem;
+}
+
+.reservation-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333; /* Dark background for input */
+  color: #fff; /* White text color */
+  font-size: 1.33rem;
+  font-family: 'Karla', sans-serif;
+  margin-bottom: 1.25rem;
+}
+
+.reservation-form input::placeholder {
+  color: #bbb; /* Light gray placeholder text */
+}
+
+.reservation-form button {
+  background-color: #F4CE14; /* Yellow background color */
+  color: #000; /* Black text color */
+  border: none;
+  border-radius: 16px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.33rem;
+  font-family: 'Karla', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-form button:hover {
+  background-color: #F4CE14; /* Darker yellow on hover */
+}
+
+
+
+/*FOOTER.JS HERE*/
+
+/* Footer Styles */
+footer {
+  background-color: #333; /* Dark background */
+  text-align: center; /* Centered text */
+  padding: 1rem; /* Padding around the content */
+  position: relative; /* Allow for positioning */
+  bottom: 0; /* Stick to the bottom of the page */
+  width: 100%; /* Full width */
+}
+
+footer p {
+  color: white; /* White text color */
+  margin: 0; /* Remove default margin */
+  font-size: 1rem; /* Font size for the text */
+  font-family:'Karla', sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  footer p {
+      font-size: 0.9rem; /* Smaller text for mobile */
+  }
+}
+
+

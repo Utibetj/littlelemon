@@ -1,6 +1,7 @@
-import React from 'react'; /* { useState }*/
+import React from 'react'; /* { useState } */
 
 const ReservationForm = () => {
+  // Uncomment and initialize state if needed
   /*const [occasion, setOccasion] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,34 +15,58 @@ const ReservationForm = () => {
   };*/
 
   return (
-    <div>
-      <h2>Reserve a Table</h2>
-      <form>  {/*onSubmit={handleSubmit}*/}
+    <div className="reservation-form">
+      <h2>RESERVE A TABLE</h2>
+      <form> {/* onSubmit={handleSubmit} */}
         <label>
           Occasion:
-          <input type="text" /* value={occasion} onChange={(e) => setOccasion(e.target.value)}*/ />
+          <select /*value={occasion} onChange={(e) => setOccasion(e.target.value)}*/>
+            <option value="">Select an Occasion</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Other">Other</option>
+          </select>
         </label>
         <label>
           Name:
-          <input type="text"  /* value={name} onChange={(e) => setName(e.target.value)}*/ />
+          <input
+            type="text"
+            placeholder="Enter your name"
+            /* value={name} onChange={(e) => setName(e.target.value)} */
+          />
         </label>
         <label>
           Email:
-          <input type="email"  /* value={email} onChange={(e) => setEmail(e.target.value)}*/ />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            /* value={email} onChange={(e) => setEmail(e.target.value)} */
+          />
         </label>
         <label>
           Date/Time:
-          <input type="datetime-local"  /* value={dateTime} onChange={(e) => setDateTime(e.target.value)}*/ />
+          <input
+            type="datetime-local"
+            /* value={dateTime} onChange={(e) => setDateTime(e.target.value)} */
+          />
         </label>
         <label>
           Persons:
-          <input type="number"  /* value={persons} onChange={(e) => setPersons(e.target.value)}*/ />
+          <input
+            type="number"
+            placeholder="Number of persons"
+            /* value={persons} onChange={(e) => setPersons(e.target.value)} */
+          />
         </label>
         <label>
           Card Info:
-          <input type="text"  /*value={cardInfo} onChange={(e) => setCardInfo(e.target.value)}*/ />
+          <input
+            type="text"
+            placeholder="Enter card information"
+            /* value={cardInfo} onChange={(e) => setCardInfo(e.target.value)} */
+          />
         </label>
-        <button type="submit">Checkout</button>
+        <button type="submit">CHECKOUT</button>
       </form>
     </div>
   );
