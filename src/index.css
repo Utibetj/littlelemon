@@ -29,9 +29,24 @@ code {
 
 /* Add responsiveness */
 @media (max-width: 768px) {
-  /* Styles for mobile view */
-  nav ul {
-      flex-direction: column; /* Stack items vertically on mobile */
+  /* Stack nav items vertically for mobile view */
+  .navbar ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul li {
+    margin-left: 0; /* Remove left margin */
+    margin-bottom: 1rem; /* Add some space between items */
+  }
+
+  header {
+    flex-direction: column; /* Stack the header elements */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  header img {
+    margin-bottom: 1rem; /* Add spacing below the logo */
   }
 }
 
@@ -159,6 +174,29 @@ TEMPORARY END*/
 
 
 /* Styles for Reserve a Table Section */
+
+
+@media (max-width: 768px) {
+  /* Stack reserve-section content for mobile view */
+  .reserve-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem; /* Reduce padding */
+  }
+
+  .reserve-section img {
+    max-width: 80%; /* Increase image width */
+    margin: 1rem 0; /* Add space above and below */
+  }
+
+  .reserve-content {
+    max-width: 100%; /* Make content full-width */
+  }
+}
+
+
+
 .reserve-section {
   display: flex;
   justify-content: space-between;
@@ -230,6 +268,22 @@ TEMPORARY END*/
 
 
 /* Specials Section Styles */
+
+
+@media (max-width: 768px) {
+  /* Single-column layout for mobile view */
+  .specials {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .special-item {
+    width: 100%; /* Full width for each item */
+    margin: 1rem 0; /* Add spacing between items */
+  }
+}
+
+
 .specials {
   display: flex;
   justify-content: space-around;
@@ -270,6 +324,28 @@ TEMPORARY END*/
 
 
 /*RESERVATIONFORM.JS HERE*/
+
+
+
+@media (max-width: 600px) {
+  .reservation-form {
+    padding: 1rem;
+  }
+
+  .reservation-form h2 {
+    font-size: 2.5rem; /* Reduce heading size */
+  }
+
+  .reservation-form label,
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form button {
+    font-size: 1.1rem; /* Smaller font size */
+  }
+}
+
+
+
 
 /* Updated Reservation Form Styles */
 .reservation-form {
@@ -365,10 +441,16 @@ footer p {
 }
 
 /* Responsive adjustments */
+
 @media (max-width: 600px) {
+  footer {
+    padding: 0.5rem;
+  }
+
   footer p {
-      font-size: 0.9rem; /* Smaller text for mobile */
+    font-size: 0.8rem; /* Smaller text for mobile */
   }
 }
+
 
 

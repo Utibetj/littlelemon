@@ -1,15 +1,18 @@
-/*function Nav(){
-    return <nav className="navbar">
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/menu">Menu</a></li>
-            <li><a href="/reservation">Reservation</a></li>
-            <li><a href="/order online">Order Online</a></li>
-            <li><a href="/login">Login</a></li>
-        </ul>
-    </nav>
-  }
-  export default Nav;*/
+import { Link } from 'react-router-dom';
 
-/*leaving this empty so that nav will be in header*/
+function Nav() {
+    return (
+        <nav className="navbar">
+            <ul>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/menu">Menu</Link></li>
+                <li><Link to="/reservation">Reservation</Link></li>
+                <li><Link to="/order-online">Order Online</Link></li>
+                <li><Link to="/login">Login</Link></li>
+            </ul>
+        </nav>
+    );
+}
+
+export default Nav;
