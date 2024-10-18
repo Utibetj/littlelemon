@@ -23,18 +23,16 @@ export default App;*/
 
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Adjusted for React Router v6
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import Header from './Header';
-import Nav from './Nav';
 import Main from './Main';
 import Footer from './Footer';
-import ReservationForm from './ReservationForm'; // If you have a separate route for reservations
+import ReservationForm from './ReservationForm'; 
 
 function App() {
   return (
     <Router>
       <Header />
-      <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/reservations" element={<ReservationForm />} />
