@@ -28,6 +28,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import ReservationForm from './ReservationForm'; 
+import ConfirmedBooking from './ConfirmedBooking';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/reservations" element={<ReservationForm />} />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
+        
         {/* Add other routes here */}
       </Routes>
       <Footer />
