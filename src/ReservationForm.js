@@ -1,61 +1,89 @@
 import React, { useState } from 'react';
 
-
 const ReservationForm = ({ availableTimes = [], updateAvailableTimes, submitForm }) => {
-    const [dateTime, setDateTime] = useState('');
-    const [time, setTime] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [occasion, setOccasion] = useState('');
-    const [persons, setPersons] = useState(1);
-    const [cardInfo, setCardInfo] = useState('');
+    const [formData, setFormData] = useState({
+        dateTime: '',
+        time: '',
+        name: '',
+        email: '',
+        occasion: '',
+        persons: 1,
+        cardInfo: ''
+    });
     const [error, setError] = useState('');
+
+    const validateFormData = () => {
+        const { dateTime, time, name, email, occasion, persons } = formData;
+        if (!dateTime || !time || !name || !email || !occasion || persons < 1) {
+            setError('Please fill out all fields correctly.');
+            return false;
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            setError('Please enter a valid email address.');
+            return false;
+        }
+        return true;
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+        if (name === 'dateTime' && typeof updateAvailableTimes === 'function') {
+            updateAvailableTimes(value);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!dateTime || !time || !name || !email) {
-            setError('Please fill out all fields.');
-            return; // Stop submission
-        }
-
-        const formData = { occasion, name, email, dateTime, time, persons, cardInfo };
+        
+        if (!validateFormData()) return; // Stop submission if validation fails
 
         try {
             await submitForm(formData);
             // Reset form fields after successful submission
-            setOccasion('');
-            setName('');
-            setEmail('');
-            setDateTime('');
-            setTime('');
-            setPersons(1);
-            setCardInfo('');
+            setFormData({
+                dateTime: '',
+                time: '',
+                name: '',
+                email: '',
+                occasion: '',
+                persons: 1,
+                cardInfo: ''
+            });
             setError(''); // Clear any previous error
         } catch (err) {
             setError('Failed to submit reservation. Please try again.');
         }
     };
 
-    const handleDateChange = (e) => {
-        const selectedDate = e.target.value;
-        setDateTime(selectedDate);
-        if (typeof updateAvailableTimes === 'function') {
-            updateAvailableTimes(selectedDate);
-        } else {
-            console.error('updateAvailableTimes is not a function');
-        }
-    };
-
     return (
         <div className="reservation-form">
             <h2>RESERVE A TABLE</h2>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error" aria-live="assertive">{error}</p>} {/* Added aria-live */}
+
             <form onSubmit={handleSubmit}>
-                <label htmlFor="res-date">Choose date</label>
-                <input type="date" id="res-date" value={dateTime} onChange={handleDateChange} />
+                <label htmlFor="dateTime">Choose date</label>
+                <input
+                    type="date"
+                    id="dateTime"
+                    name="dateTime"
+                    value={formData.dateTime}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                />
                 
-                <label htmlFor="res-time">Choose time</label>
-                <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
+                <label htmlFor="time">Choose time</label>
+                <select
+                    id="time"
+                    name="time"
+                    value={formData.time}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                >
+                    <option value="">Select a time</option>
                     {availableTimes.length > 0 ? (
                         availableTimes.map((time, index) => (
                             <option key={index} value={time}>{time}</option>
@@ -65,11 +93,26 @@ const ReservationForm = ({ availableTimes = [], updateAvailableTimes, submitForm
                     )}
                 </select>
 
-                <label htmlFor="guests">Number of guests</label>
-                <input type="number" placeholder="1" min="1" max="10" id="guests" value={persons} onChange={(e) => setPersons(e.target.value)} />
+                <label htmlFor="persons">Number of guests</label>
+                <input
+                    type="number"
+                    name="persons"
+                    min="1"
+                    max="10"
+                    id="persons"
+                    value={formData.persons}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                />
 
                 <label htmlFor="occasion">Occasion</label>
-                <select id="occasion" value={occasion} onChange={(e) => setOccasion(e.target.value)}>
+                <select
+                    id="occasion"
+                    name="occasion"
+                    value={formData.occasion}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                >
                     <option value="">Select an Occasion</option>
                     <option value="Birthday">Birthday</option>
                     <option value="Anniversary">Anniversary</option>
@@ -77,15 +120,40 @@ const ReservationForm = ({ availableTimes = [], updateAvailableTimes, submitForm
                 </select>
 
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                />
 
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required // HTML5 validation
+                />
 
-                <label htmlFor="card-info">Card Info</label>
-                <input type="text" id="card-info" placeholder="Enter card information" value={cardInfo} onChange={(e) => setCardInfo(e.target.value)} />
+                <label htmlFor="cardInfo">Card Info</label>
+                <input
+                    type="text"
+                    id="cardInfo"
+                    name="cardInfo"
+                    placeholder="Enter card information"
+                    value={formData.cardInfo}
+                    onChange={handleChange}
+                />
 
-                <button type="submit">Make Your Reservation</button>
+                <button type="submit" aria-label="Make Your Reservation"> {/* Added aria-label */}
+                    Make Your Reservation
+                </button>
             </form>
         </div>
     );
