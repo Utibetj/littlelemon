@@ -36,7 +36,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/reservations" element={<ReservationForm />} />
+        <Route path="/reservations" element={<ReservationForm  />} />
         <Route path="/confirmed" element={<ConfirmedBooking />} />
         
         {/* Add other routes here */}

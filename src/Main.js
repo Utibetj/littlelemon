@@ -6,28 +6,14 @@ import Dessert from './icons_assets/lemon dessert.jpg';
 import ReservationForm from './ReservationForm';
 import CallToAction from './CallToAction';
 import SpecialItem from './SpecialItem';
+import ConfirmedBooking from './ConfirmedBooking'; // Import ConfirmedBooking
 
 import { initializeTimes } from './timeUtils';
 import { fetchAvailableTimes } from './api'; // Add this line
 
-// Define the API function for submitting the form
-const submitAPI = async (formData) => {
-    const response = await fetch('/api/submit-booking', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json(); // Return the response as JSON
-};
-
 const Main = () => {
     const [availableTimes, setAvailableTimes] = useState(initializeTimes());
+    const [confirmedBooking, setConfirmedBooking] = useState(null); // State for confirmed booking
     const navigate = useNavigate();
 
     const updateAvailableTimes = async (date) => {
@@ -39,15 +25,9 @@ const Main = () => {
         }
     };
 
-    const submitForm = async (formData) => {
-        try {
-            const success = await submitAPI(formData);
-            if (success) {
-                navigate('/confirmed'); // Ensure this is navigating correctly
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        }
+    const submitForm = (formData) => {
+        setConfirmedBooking(formData); // Save the booking information in state
+        navigate('/confirmed'); // Navigate to the confirmation page
     };
 
     return (
@@ -81,8 +61,12 @@ const Main = () => {
             <ReservationForm
                 availableTimes={availableTimes}
                 updateAvailableTimes={updateAvailableTimes}
-                submitForm={submitForm}
+                submitForm={submitForm} // Pass submitForm to ReservationForm
             />
+
+            {/* Conditionally render the ConfirmedBooking component if confirmedBooking is set */}
+            {confirmedBooking && <ConfirmedBooking booking={confirmedBooking} />}
+
         </main>
     );
 };
